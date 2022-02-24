@@ -7,7 +7,7 @@ let scoreX_count = 0;
 let scoreO_count = 0;
 let score_draw = 0;
 let cellClickCount; // holds the current game cell's clicked
-let playerTurn = true; // true = x's turn and false = o's
+let playerTurn = "x";
 let gameCellsIndex = []; // this keeps a record of cell indexes as positions in the array with the values of "x" and "o"
 let winCombinations = [
   [0, 1, 2],
@@ -38,7 +38,7 @@ function gameWin() {
     cell.removeAttribute("onclick");
   });
   board.classList.add("overlay");
-  if (playerTurn) {
+  if (playerTurn === "x") {
     statusGame.innerHTML = `O WON`;
     ++scoreO_count;
     scoreO.innerHTML = scoreO_count;
@@ -62,19 +62,19 @@ function gameDraw() {
 
 function appendCellInGame(cell) {
   if (!cell.classList.contains("x") && !cell.classList.contains("o")) {
-    if (playerTurn) {
+    if (playerTurn === "x") {
       cell.classList.add("x");
       board.classList.remove("x");
       board.classList.add("o");
       gameCellsIndex[cell.id] = "x";
-      playerTurn = false;
+      playerTurn = "o";
       ++cellClickCount;
     } else {
       cell.classList.add("o");
       board.classList.remove("o");
       board.classList.add("x");
       gameCellsIndex[cell.id] = "o";
-      playerTurn = true;
+      playerTurn = "x";
       ++cellClickCount;
     }
   }
@@ -83,7 +83,7 @@ function appendCellInGame(cell) {
 function checkWinConditions() {
   return winCombinations.some((combination) => {
     let pleyer;
-    if (!playerTurn) player = "x";
+    if (playerTurn === "o") player = "x";
     else player = "o";
 
     let win = combination.every((index) => {
@@ -113,5 +113,5 @@ function restartGame() {
   startGame();
 }
 
-board.classList.add("x");
+board.classList.add(playerTurn);
 startGame();
