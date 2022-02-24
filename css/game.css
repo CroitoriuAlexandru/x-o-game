@@ -1,0 +1,75 @@
+.container {
+  margin: 20px 50px 0 50px;
+  border: 2px solid white;
+  border-radius: 32px;
+  box-shadow: inset 0px 0px 20px 3px rgba(0, 0, 0, 0.1);
+}
+
+.board {
+  position: relative;
+  display: inline-block;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: var(--board-size);
+  height: var(--board-size);
+  cursor: pointer;
+  margin: 0 auto 40px auto;
+}
+
+.cell {
+  position: relative;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 1px solid black;
+}
+
+.cell.x:before {
+  content: "X";
+}
+.cell.o:before {
+  content: "O";
+}
+.cell.x:before,
+.cell.o:before {
+  font-size: var(--cell-size);
+  position: absolute;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  text-align: center;
+  bottom: 3px;
+  cursor: not-allowed;
+}
+.board.x .cell:not(.x):not(.o):hover::after {
+  content: "X";
+}
+.board.o .cell:not(.x):not(.o):hover::after {
+  content: "O";
+}
+.board.x .cell:not(.x):not(.o):hover::after,
+.board.o .cell:not(.x):not(.o):hover::after {
+  font-size: var(--cell-size);
+  position: absolute;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  text-align: center;
+  bottom: 3px;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.board.overlay:hover {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.board.overlay:hover::after {
+  content: "Game Over Restart Game";
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  padding-top: var(--cell-size);
+  padding-bottom: var(--cell-size);
+  font-weight: 700;
+  word-spacing: 4px;
+  line-height: 45px;
+}

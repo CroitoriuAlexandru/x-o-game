@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- custom style -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/game.css" />
+    <link rel="stylesheet" href="css/display.css" />
+    <title>X and O</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="display">
+        <h1 class="status" id="statusGame">Game in progress</h1>
+        <ul class="score-count">
+          <li class="score-x">
+            <div class="score-title">Score X</div>
+            <p id="scoreX">0</p>
+          </li>
+          <li class="score-o">
+            <div class="score-title">Score O</div>
+            <p id="scoreO">0</p>
+          </li>
+          <li class="score-draw">
+            <div class="score-title">Score Draw</div>
+            <p id="scoreDraw">0</p>
+          </li>
+        </ul>
+        <button class="restart-game" onclick="restartGame()">
+          Restart Game
+        </button>
+      </div>
+      <div class="board" id="board"></div>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>
